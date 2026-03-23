@@ -71,7 +71,7 @@ Your linked account data is retained until you remove it yourself using `/unlink
 
 The Bot interacts with the following third-party services:
 
-- **Torn City API** â€” Used to retrieve player and faction data, and to verify Discord-to-Torn account associations. See [Torn's Privacy Policy](https://www.torn.com/privacypolicy.php).
+- **Torn City API** - ” Used to retrieve player and faction data, and to verify Discord-to-Torn account associations. See [Torn's Privacy Policy](https://www.torn.com/privacypolicy.php).
 - **Discord** â€” The platform on which the Bot operates. See [Discord's Privacy Policy](https://discord.com/privacy).
 
 ---
@@ -80,9 +80,9 @@ The Bot interacts with the following third-party services:
 
 You have the right to:
 
-- **Access** â€” Ask the Bot operator what data is stored about you.
-- **Deletion** â€” Use `/unlink` to remove your linked account data, or `/removekey` to remove only your API key. Contact the Bot operator for full removal.
-- **Correction** â€” Re-link your account or update your API key if your information changes.
+- **Access** - ” Ask the Bot operator what data is stored about you.
+- **Deletion** - ” Use `/unlink` to remove your linked account data, or `/removekey` to remove only your API key. Contact the Bot operator for full removal.
+- **Correction** - ” Re-link your account or update your API key if your information changes.
 
 ---
 
