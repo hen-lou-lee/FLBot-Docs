@@ -57,7 +57,8 @@ You may optionally provide your personal Torn API key via `/link` or `/setkey`. 
 - It is used only to make Torn API requests on your behalf (profile lookups, balance checks, and verification).
 - It is never transmitted to any third party other than the Torn City API.
 - You may remove it at any time using `/removekey`.
-- You should use a **minimal access key** (Public Access scope) wherever possible to limit exposure.
+- The minimum required access level is **Limited Access** with the following selections enabled: **Public**, **Stocks**, and **Bank**. A Public-only key will not have sufficient permissions for all personal commands.
+- You should only enable the scopes listed above and leave all others disabled to limit exposure.
 
 ---
 
