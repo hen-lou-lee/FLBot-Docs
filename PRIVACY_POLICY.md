@@ -72,7 +72,7 @@ Your linked account data is retained until you remove it yourself using `/unlink
 The Bot interacts with the following third-party services:
 
 - **Torn City API** - ” Used to retrieve player and faction data, and to verify Discord-to-Torn account associations. See [Torn's Privacy Policy](https://www.torn.com/privacypolicy.php).
-- **Discord** â€” The platform on which the Bot operates. See [Discord's Privacy Policy](https://discord.com/privacy).
+- **Discord** - ” The platform on which the Bot operates. See [Discord's Privacy Policy](https://discord.com/privacy).
 
 ---
 
