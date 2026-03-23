@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** March 22, 2026
+**Last updated:** March 23, 2026
 
 This Privacy Policy explains how FLBot ("the Bot") collects, uses, and stores information about users.
 
@@ -37,9 +37,9 @@ Your data is never sold, shared with third parties, or used for advertising.
 
 ## 3. Data Storage
 
-Linked account data (Discord User ID ↔ Torn Player ID, and optionally your personal Torn API key) is stored in a local SQLite database (`links.db`) on the server hosting the Bot. It is not stored in any external database or cloud service.
+Linked account data (Discord User ID â†” Torn Player ID, and optionally your personal Torn API key) is stored in a local SQLite database (`links.db`) on the server hosting the Bot. It is not stored in any external database or cloud service.
 
-Your personal API key, if provided, is stored in plain text within this local database. It is accessible only to the Bot operator and is used solely to make Torn API requests on your behalf.
+Your personal API key, if provided, is stored in encrypted form (AES-128 Fernet encryption) within this local database. It is accessible only to the Bot operator and is used solely to make Torn API requests on your behalf.
 
 ---
 
@@ -53,12 +53,11 @@ When you use `/link`, the Bot queries the Torn API to confirm that your Torn acc
 
 You may optionally provide your personal Torn API key via `/link` or `/setkey`. By doing so, you acknowledge that:
 
-- The key is stored locally on the Bot's host server.
+- The key is stored in encrypted form on the Bot's host server.
 - It is used only to make Torn API requests on your behalf (profile lookups, balance checks, and verification).
 - It is never transmitted to any third party other than the Torn City API.
 - You may remove it at any time using `/removekey`.
-- The minimum required access level is **Limited Access** with the following selections enabled: **Public**, **Stocks**, and **Bank**. A Public-only key will not have sufficient permissions for all personal commands.
-- You should only enable the scopes listed above and leave all others disabled to limit exposure.
+- You should use a **minimal access key** (Public Access scope) wherever possible to limit exposure.
 
 ---
 
@@ -72,8 +71,8 @@ Your linked account data is retained until you remove it yourself using `/unlink
 
 The Bot interacts with the following third-party services:
 
-- **Torn City API** — Used to retrieve player and faction data, and to verify Discord-to-Torn account associations. See [Torn's Privacy Policy](https://www.torn.com/privacypolicy.php).
-- **Discord** — The platform on which the Bot operates. See [Discord's Privacy Policy](https://discord.com/privacy).
+- **Torn City API** â€” Used to retrieve player and faction data, and to verify Discord-to-Torn account associations. See [Torn's Privacy Policy](https://www.torn.com/privacypolicy.php).
+- **Discord** â€” The platform on which the Bot operates. See [Discord's Privacy Policy](https://discord.com/privacy).
 
 ---
 
@@ -81,9 +80,9 @@ The Bot interacts with the following third-party services:
 
 You have the right to:
 
-- **Access** — Ask the Bot operator what data is stored about you.
-- **Deletion** — Use `/unlink` to remove your linked account data, or `/removekey` to remove only your API key. Contact the Bot operator for full removal.
-- **Correction** — Re-link your account or update your API key if your information changes.
+- **Access** â€” Ask the Bot operator what data is stored about you.
+- **Deletion** â€” Use `/unlink` to remove your linked account data, or `/removekey` to remove only your API key. Contact the Bot operator for full removal.
+- **Correction** â€” Re-link your account or update your API key if your information changes.
 
 ---
 
