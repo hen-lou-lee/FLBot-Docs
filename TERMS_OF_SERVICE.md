@@ -57,7 +57,8 @@ You may optionally provide your personal Torn API key via `/link` or `/setkey`. 
 
 - The key is stored locally on the Bot's host server.
 - It will be used to make Torn API requests on your behalf to improve performance and reduce reliance on the Bot's shared key.
-- You should provide a **minimal access key** (Public Access scope) to limit the permissions the Bot holds on your behalf.
+- The minimum required access level is **Limited Access**. You must enable the following selections on your key: **Public**, **Stocks**, and **Bank**. A Public-only key will not have sufficient permissions for all personal commands and will return API error 16.
+- To generate a correctly scoped key, visit [torn.com/preferences.php#tab=api](https://www.torn.com/preferences.php#tab=api) and enable only the required selections listed above.
 - You may remove it at any time using `/removekey` without affecting your account link.
 - The Bot operator accepts no responsibility for any consequences arising from a compromised API key.
 
