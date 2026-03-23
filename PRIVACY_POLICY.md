@@ -57,7 +57,7 @@ You may optionally provide your personal Torn API key via `/link` or `/setkey`. 
 - It is used only to make Torn API requests on your behalf (profile lookups, balance checks, and verification).
 - It is never transmitted to any third party other than the Torn City API.
 - You may remove it at any time using `/removekey`.
-- You should use a **minimal access key** (Public Access scope) wherever possible to limit exposure.
+- A Limited Access key is required to use the full functionality of the Bot. You should not provide a key with higher access than necessary
 
 ---
 
