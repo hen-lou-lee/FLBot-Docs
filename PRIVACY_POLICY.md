@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** March 26, 2026
+**Last updated:** March 26, 2026 (rev. 2)
 
 This Privacy Policy explains how FLBot ("the Bot") collects, uses, and stores information about users.
 
@@ -47,6 +47,8 @@ Your personal API key, if provided, is stored in encrypted form (AES-256 SQLCiph
 
 When you use `/link`, the Bot queries the Torn API to confirm that your Torn account is officially associated with your Discord account. If Torn's records show your Torn ID is linked to a different Discord account, the link will be rejected. This cross-check is performed to prevent impersonation and to maintain consistency with other Torn-integrated services.
 
+Faction administrators may also use `/linkall` to automatically link all current faction members using Torn's public Discord verification records. This process uses the same Discord ID and Torn ID association that Torn City maintains on their own servers. No additional data is collected beyond what is described in Section 1. If you do not wish to be linked, you may request removal at any time using `/unlink` or by contacting the Bot operator.
+
 ---
 
 ## 5. Personal API Key
@@ -57,7 +59,7 @@ You may optionally provide your personal Torn API key via `/link api_key:[key]`.
 - It is used only to make Torn API requests on your behalf (profile lookups, balance checks, and verification).
 - It is never transmitted to any third party other than the Torn City API.
 - You may remove it at any time using `/unlink key_only:True` without removing your account link.
-- A Limited Access key is sufficient for full Bot functionality. You should not provide a key with higher access than necessary.
+- For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&faction=members,warfare,wars,basic,chain,balance,attacks,attacksfull&user=faction,basic,discord&title=FLBot), which grants only the exact permissions the Bot requires. You should not provide a key with higher access than necessary.
 
 ---
 
