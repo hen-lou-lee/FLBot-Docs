@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** March 23, 2026
+**Last updated:** March 26, 2026
 
 This Privacy Policy explains how FLBot ("the Bot") collects, uses, and stores information about users.
 
@@ -16,7 +16,7 @@ The Bot collects the following data only when you interact with it directly:
 | Torn City Player ID | When you voluntarily use `/link` |
 | Torn City Player Name | Retrieved from the Torn API at link time |
 | Faction Membership Status | Verified via the Torn API at link time |
-| Personal Torn API Key | Only if you voluntarily provide one via `/link` or `/setkey` |
+| Personal Torn API Key | Only if you voluntarily provide one via `/link api_key:[key]` |
 
 No messages, voice data, or other personal information are collected or stored.
 
@@ -37,9 +37,9 @@ Your data is never sold, shared with third parties, or used for advertising.
 
 ## 3. Data Storage
 
-Linked account data (Discord User ID â†” Torn Player ID, and optionally your personal Torn API key) is stored in a local SQLite database (`links.db`) on the server hosting the Bot. It is not stored in any external database or cloud service.
+Linked account data (Discord User ID → Torn Player ID, and optionally your personal Torn API key) is stored in a local SQLite database (`links.db`) on the server hosting the Bot. It is not stored in any external database or cloud service.
 
-Your personal API key, if provided, is stored in encrypted form (AES-128 Fernet encryption) within this local database. It is accessible only to the Bot operator and is used solely to make Torn API requests on your behalf.
+Your personal API key, if provided, is stored in encrypted form (AES-256 SQLCipher + AES-128 Fernet column encryption) within this local database. It is accessible only to the Bot operator and is used solely to make Torn API requests on your behalf.
 
 ---
 
@@ -51,19 +51,19 @@ When you use `/link`, the Bot queries the Torn API to confirm that your Torn acc
 
 ## 5. Personal API Key
 
-You may optionally provide your personal Torn API key via `/link` or `/setkey`. By doing so, you acknowledge that:
+You may optionally provide your personal Torn API key via `/link api_key:[key]`. By doing so, you acknowledge that:
 
 - The key is stored in encrypted form on the Bot's host server.
 - It is used only to make Torn API requests on your behalf (profile lookups, balance checks, and verification).
 - It is never transmitted to any third party other than the Torn City API.
-- You may remove it at any time using `/removekey`.
-- A Limited Access key is required to use the full functionality of the Bot. You should not provide a key with higher access than necessary
+- You may remove it at any time using `/unlink key_only:True` without removing your account link.
+- A Limited Access key is sufficient for full Bot functionality. You should not provide a key with higher access than necessary.
 
 ---
 
 ## 6. Data Retention
 
-Your linked account data is retained until you remove it yourself using `/unlink`, or until the Bot operator deletes it manually. Your personal API key can be independently removed at any time using `/removekey` without removing your account link. You may request full removal at any time through your server's administration.
+Your linked account data is retained until you remove it yourself using `/unlink`, or until the Bot operator deletes it manually. Your personal API key can be independently removed at any time using `/unlink key_only:True` without removing your account link. You may request full removal at any time through your server's administration.
 
 ---
 
@@ -71,8 +71,8 @@ Your linked account data is retained until you remove it yourself using `/unlink
 
 The Bot interacts with the following third-party services:
 
-- **Torn City API** - ” Used to retrieve player and faction data, and to verify Discord-to-Torn account associations. See [Torn's Privacy Policy](https://www.torn.com/privacypolicy.php).
-- **Discord** - ” The platform on which the Bot operates. See [Discord's Privacy Policy](https://discord.com/privacy).
+- **Torn City API** — Used to retrieve player and faction data, and to verify Discord-to-Torn account associations. See [Torn's Privacy Policy](https://www.torn.com/privacypolicy.php).
+- **Discord** — The platform on which the Bot operates. See [Discord's Privacy Policy](https://discord.com/privacy).
 
 ---
 
@@ -80,9 +80,9 @@ The Bot interacts with the following third-party services:
 
 You have the right to:
 
-- **Access** - ” Ask the Bot operator what data is stored about you.
-- **Deletion** - ” Use `/unlink` to remove your linked account data, or `/removekey` to remove only your API key. Contact the Bot operator for full removal.
-- **Correction** - ” Re-link your account or update your API key if your information changes.
+- **Access** — Ask the Bot operator what data is stored about you.
+- **Deletion** — Use `/unlink` to remove your linked account data, or `/unlink key_only:True` to remove only your API key. Contact the Bot operator for full removal.
+- **Correction** — Re-link your account or update your API key if your information changes.
 
 ---
 
