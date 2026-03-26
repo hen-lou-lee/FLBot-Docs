@@ -57,7 +57,7 @@ You may optionally provide your personal Torn API key via `/link api_key:[key]`.
 
 - The key is stored locally on the Bot's host server in encrypted form.
 - It will be used to make Torn API requests on your behalf to improve performance and reduce reliance on the Bot's shared key.
-- You should provide a **minimal access key** (Public Access scope) to limit the permissions the Bot holds on your behalf.
+- For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&faction=members,warfare,wars,basic,chain,balance,attacks,attacksfull&user=faction,basic,discord&title=FLBot), which grants only the exact permissions the Bot requires and nothing more.
 - You may remove it at any time using `/unlink key_only:True` without affecting your account link.
 - The Bot operator accepts no responsibility for any consequences arising from a compromised API key.
 
