@@ -1,6 +1,6 @@
 # Terms of Service
 
-**Last updated:** March 22, 2026
+**Last updated:** March 26, 2026
 
 By using FLBot ("the Bot") in any Discord server, you agree to the following terms.
 
@@ -35,7 +35,7 @@ The Bot collects and stores the following data:
 - **Discord User ID** — used to identify users within the server.
 - **Torn City Player ID and Name** — collected when a user voluntarily links their account via `/link`.
 - **Faction Membership Status** — verified at the time of account linking and when `/verify` is used.
-- **Personal Torn API Key** — only if you voluntarily provide one via `/link` or `/setkey`. This is stored locally and used solely to make Torn API requests on your behalf.
+- **Personal Torn API Key** — only if you voluntarily provide one via `/link api_key:[key]`. This is stored locally in encrypted form and used solely to make Torn API requests on your behalf.
 
 All data is stored in a local SQLite database on the server hosting the Bot. No data is sold or shared with third parties.
 
@@ -53,20 +53,19 @@ Use `/verify` to refresh your faction status, role assignment, and nickname at a
 
 ## 6. Personal Torn API Key
 
-You may optionally provide your personal Torn API key via `/link` or `/setkey`. By doing so you agree that:
+You may optionally provide your personal Torn API key via `/link api_key:[key]`. By doing so you agree that:
 
-- The key is stored locally on the Bot's host server.
+- The key is stored locally on the Bot's host server in encrypted form.
 - It will be used to make Torn API requests on your behalf to improve performance and reduce reliance on the Bot's shared key.
-- The minimum required access level is **Limited Access**. You must enable the following selections on your key: **Public**, **Stocks**, and **Bank**. A Public-only key will not have sufficient permissions for all personal commands and will return API error 16.
-- To generate a correctly scoped key, visit [torn.com/preferences.php#tab=api](https://www.torn.com/preferences.php#tab=api) and enable only the required selections listed above.
-- You may remove it at any time using `/removekey` without affecting your account link.
+- You should provide a **minimal access key** (Public Access scope) to limit the permissions the Bot holds on your behalf.
+- You may remove it at any time using `/unlink key_only:True` without affecting your account link.
 - The Bot operator accepts no responsibility for any consequences arising from a compromised API key.
 
 ---
 
 ## 7. Banking and Financial Requests
 
-The `/withdraw` command facilitates in-game currency request coordination within Torn City. The Bot does not handle, store, or transfer any real-world money. All financial activity is entirely within the Torn City game environment.
+The `/bank` command facilitates in-game currency request coordination within Torn City. The Bot does not handle, store, or transfer any real-world money. All financial activity is entirely within the Torn City game environment.
 
 ---
 
