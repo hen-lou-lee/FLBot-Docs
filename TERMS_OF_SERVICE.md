@@ -1,6 +1,6 @@
 # Terms of Service
 
-**Last updated:** March 26, 2026
+**Last updated:** April 5, 2026
 
 By using FLBot ("the Bot") in any Discord server, you agree to the following terms.
 
@@ -14,7 +14,7 @@ Use of the Bot constitutes your acceptance of these Terms of Service. If you do 
 
 ## 2. Description of Service
 
-FLBot is a Discord bot designed to assist Torn City faction management. It provides features including chain monitoring, war alerts, banking requests, member status lookups, and account linking between Discord and Torn City profiles.
+FLBot is a Discord bot designed to assist Torn City faction and company management. It provides features including chain monitoring, war alerts, banking requests, member status lookups, account linking between Discord and Torn City profiles, investment reporting, stat leaderboards, and company director tools (employee management, stock tracking, and position optimisation).
 
 ---
 
@@ -24,7 +24,7 @@ You must comply with:
 - [Discord's Terms of Service](https://discord.com/terms)
 - [Torn City's Terms of Service](https://www.torn.com/terms.php)
 
-Use of the Bot is intended for members of authorized Discord servers only.
+Use of the Bot is intended for members of authorised Discord servers only.
 
 ---
 
@@ -56,48 +56,59 @@ Use `/verify` to refresh your faction status, role assignment, and nickname at a
 You may optionally provide your personal Torn API key via `/link api_key:[key]`. By doing so you agree that:
 
 - The key is stored locally on the Bot's host server in encrypted form.
-- It will be used to make Torn API requests on your behalf to improve performance and reduce reliance on the Bot's shared key.
-- For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&faction=members,warfare,wars,basic,chain,balance,attacks,attacksfull&user=faction,basic,discord&title=FLBot), which grants only the exact permissions the Bot requires and nothing more.
+- It will be used to make Torn API requests on your behalf, including faction data, personal stats, investment data, and — if you are a company director — company profile, employee, and stock data.
+- For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&company=companies,profile,applications,detailed,employees,news,stock&faction=members,wars,basic,chain,news,balance,attacks&user=faction,basic,discord,personalstats,money,stocks&torn=stocks&title=FLBot_V3), which grants only the exact permissions the Bot requires and nothing more.
 - You may remove it at any time using `/unlink key_only:True` without affecting your account link.
 - The Bot operator accepts no responsibility for any consequences arising from a compromised API key.
 
 ---
 
-## 7. Banking and Financial Requests
+## 7. Company Director Features
+
+The `/company` commands (status, employees, stock, optimize) access your Torn company data exclusively via your personal Torn API key. By using these commands you acknowledge that:
+
+- The Bot will retrieve your company's profile, employee list, stock inventory, and financial data from the Torn API on your behalf.
+- This data is displayed in Discord in response to your command and is not persistently stored.
+- These commands are intended for use by company directors or authorised personnel only.
+
+---
+
+## 8. Banking and Financial Requests
 
 The `/bank` command facilitates in-game currency request coordination within Torn City. The Bot does not handle, store, or transfer any real-world money. All financial activity is entirely within the Torn City game environment.
 
 ---
 
-## 8. Prohibited Use
+## 9. Prohibited Use
 
 You must not use the Bot to:
 - Harass, impersonate, or harm other users.
 - Link a Torn account that does not belong to you.
 - Provide an API key that does not belong to you.
+- Access company data you are not authorised to view.
 - Circumvent or exploit Bot functionality for unintended purposes.
 - Violate Discord's or Torn City's Terms of Service.
 
 ---
 
-## 9. Availability
+## 10. Availability
 
 The Bot is provided as-is with no guarantee of uptime, accuracy, or availability. Features may change or be discontinued at any time without notice.
 
 ---
 
-## 10. Limitation of Liability
+## 11. Limitation of Liability
 
-The Bot's operators are not liable for any loss, damage, or disruption arising from use of the Bot, including but not limited to in-game losses, missed chain alerts, incorrect vault payments, or consequences arising from a stored API key being exposed.
+The Bot's operators are not liable for any loss, damage, or disruption arising from use of the Bot, including but not limited to in-game losses, missed chain alerts, incorrect vault payments, company mismanagement, or consequences arising from a stored API key being exposed.
 
 ---
 
-## 11. Changes to These Terms
+## 12. Changes to These Terms
 
 These terms may be updated at any time. Continued use of the Bot after changes constitutes acceptance of the revised terms.
 
 ---
 
-## 12. Contact
+## 13. Contact
 
 For questions or concerns, contact the Bot operator through your Discord server's administration.
