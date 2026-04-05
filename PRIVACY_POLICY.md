@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** March 26, 2026 (rev. 2)
+**Last updated:** April 5, 2026 (rev. 3)
 
 This Privacy Policy explains how FLBot ("the Bot") collects, uses, and stores information about users.
 
@@ -18,6 +18,16 @@ The Bot collects the following data only when you interact with it directly:
 | Faction Membership Status | Verified via the Torn API at link time |
 | Personal Torn API Key | Only if you voluntarily provide one via `/link api_key:[key]` |
 
+The following data is retrieved on demand and is **not persistently stored**:
+
+| Data | Command | Source |
+|---|---|---|
+| Personal stats (Xanax, Energy Drinks, etc.) | `/leaderboard` | Torn API, using bot key |
+| Bank balance and stock holdings | `/investments` | Torn API, using your personal key |
+| Company profile, financials, efficiency | `/company status` | Torn API, using your personal key |
+| Company employee list, positions, stats | `/company employees`, `/company optimize` | Torn API, using your personal key |
+| Company stock inventory | `/company stock` | Torn API, using your personal key |
+
 No messages, voice data, or other personal information are collected or stored.
 
 ---
@@ -29,7 +39,7 @@ Collected data is used exclusively to:
 - Associate your Discord account with your Torn City profile for Bot features.
 - Verify faction membership to restrict access to relevant commands.
 - Display your Torn profile information alongside banking requests.
-- Use your personal Torn API key (if provided) to perform lookups on your behalf, reducing load on the Bot's shared API key.
+- Use your personal Torn API key (if provided) to perform lookups on your behalf, including faction data, investment data, and company director data.
 
 Your data is never sold, shared with third parties, or used for advertising.
 
@@ -40,6 +50,8 @@ Your data is never sold, shared with third parties, or used for advertising.
 Linked account data (Discord User ID → Torn Player ID, and optionally your personal Torn API key) is stored in a local SQLite database (`links.db`) on the server hosting the Bot. It is not stored in any external database or cloud service.
 
 Your personal API key, if provided, is stored in encrypted form (AES-256 SQLCipher + AES-128 Fernet column encryption) within this local database. It is accessible only to the Bot operator and is used solely to make Torn API requests on your behalf.
+
+Company data, employee information, and stock data retrieved via `/company` commands is fetched live from the Torn API and displayed in Discord. None of this data is written to the database or retained after the command response is sent.
 
 ---
 
@@ -56,10 +68,10 @@ Faction administrators may also use `/linkall` to automatically link all current
 You may optionally provide your personal Torn API key via `/link api_key:[key]`. By doing so, you acknowledge that:
 
 - The key is stored in encrypted form on the Bot's host server.
-- It is used only to make Torn API requests on your behalf (profile lookups, balance checks, and verification).
+- It is used only to make Torn API requests on your behalf — including profile lookups, balance checks, investment data, verification, and company director data if you use `/company` commands.
 - It is never transmitted to any third party other than the Torn City API.
 - You may remove it at any time using `/unlink key_only:True` without removing your account link.
-- For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&faction=members,warfare,wars,basic,chain,balance,attacks,attacksfull&user=faction,basic,discord&title=FLBot), which grants only the exact permissions the Bot requires. You should not provide a key with higher access than necessary.
+- For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&company=companies,profile,applications,detailed,employees,news,stock&faction=members,wars,basic,chain,news,balance,attacks&user=faction,basic,discord,personalstats,money,stocks&torn=stocks&title=FLBot_V3), which grants only the exact permissions the Bot requires. You should not provide a key with higher access than necessary.
 
 ---
 
@@ -67,13 +79,15 @@ You may optionally provide your personal Torn API key via `/link api_key:[key]`.
 
 Your linked account data is retained until you remove it yourself using `/unlink`, or until the Bot operator deletes it manually. Your personal API key can be independently removed at any time using `/unlink key_only:True` without removing your account link. You may request full removal at any time through your server's administration.
 
+On-demand data (company info, employee stats, stock levels, investment data) is never retained — it is fetched, displayed, and discarded within the same command response.
+
 ---
 
 ## 7. Third-Party Services
 
 The Bot interacts with the following third-party services:
 
-- **Torn City API** — Used to retrieve player and faction data, and to verify Discord-to-Torn account associations. See [Torn's Privacy Policy](https://www.torn.com/privacypolicy.php).
+- **Torn City API** — Used to retrieve player, faction, and company data, and to verify Discord-to-Torn account associations. See [Torn's Privacy Policy](https://www.torn.com/privacypolicy.php).
 - **Discord** — The platform on which the Bot operates. See [Discord's Privacy Policy](https://discord.com/privacy).
 
 ---
