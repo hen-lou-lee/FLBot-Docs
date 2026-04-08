@@ -1,6 +1,6 @@
 # Terms of Service
 
-**Last updated:** April 5, 2026
+**Last updated:** April 8, 2026
 
 By using FLBot ("the Bot") in any Discord server, you agree to the following terms.
 
@@ -57,7 +57,7 @@ You may optionally provide your personal Torn API key via `/link api_key:[key]`.
 
 - The key is stored locally on the Bot's host server in encrypted form.
 - It will be used to make Torn API requests on your behalf, including faction data, personal stats, investment data, and — if you are a company director — company profile, employee, and stock data.
-- For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&company=companies,profile,applications,detailed,employees,news,stock&faction=members,wars,basic,chain,news,balance,attacks&user=faction,basic,discord,personalstats,money,stocks&torn=stocks&title=FLBot_V3), which grants only the exact permissions the Bot requires and nothing more.
+- For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&company=profile,detailed,employees,stock&faction=members,wars,basic,chain,news,balance,attacks&user=faction,basic,discord,personalstats,money,stocks,log&logIds=125&torn=stocks&title=FLBot_V5), which grants only the exact permissions the Bot requires and nothing more.
 - You may remove it at any time using `/unlink key_only:True` without affecting your account link.
 - The Bot operator accepts no responsibility for any consequences arising from a compromised API key.
 
