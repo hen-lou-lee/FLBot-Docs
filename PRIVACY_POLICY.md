@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** April 5, 2026 (rev. 3)
+**Last updated:** April 8, 2026 (rev. 4)
 
 This Privacy Policy explains how FLBot ("the Bot") collects, uses, and stores information about users.
 
@@ -71,7 +71,7 @@ You may optionally provide your personal Torn API key via `/link api_key:[key]`.
 - It is used only to make Torn API requests on your behalf — including profile lookups, balance checks, investment data, verification, and company director data if you use `/company` commands.
 - It is never transmitted to any third party other than the Torn City API.
 - You may remove it at any time using `/unlink key_only:True` without removing your account link.
-- For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&company=companies,profile,applications,detailed,employees,news,stock&faction=members,wars,basic,chain,news,balance,attacks&user=faction,basic,discord,personalstats,money,stocks&torn=stocks&title=FLBot_V3), which grants only the exact permissions the Bot requires. You should not provide a key with higher access than necessary.
+- For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&company=profile,detailed,employees,stock&faction=members,wars,basic,chain,news,balance,attacks&user=faction,basic,discord,personalstats,money,stocks,log&logIds=125&torn=stocks&title=FLBot_V5), which grants only the exact permissions the Bot requires. You should not provide a key with higher access than necessary.
 
 ---
 
