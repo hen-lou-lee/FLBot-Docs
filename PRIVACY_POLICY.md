@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** April 8, 2026 (rev. 4)
+**Last updated:** April 10, 2026 (rev. 5)
 
 This Privacy Policy explains how FLBot ("the Bot") collects, uses, and stores information about users.
 
@@ -22,11 +22,19 @@ The following data is retrieved on demand and is **not persistently stored**:
 
 | Data | Command | Source |
 |---|---|---|
-| Personal stats (Xanax, Energy Drinks, etc.) | `/leaderboard` | Torn API, using bot key |
 | Bank balance and stock holdings | `/investments` | Torn API, using your personal key |
 | Company profile, financials, efficiency | `/company status` | Torn API, using your personal key |
 | Company employee list, positions, stats | `/company employees`, `/company optimize` | Torn API, using your personal key |
 | Company stock inventory | `/company stock` | Torn API, using your personal key |
+
+The following data is **persistently stored** for leaderboard and tracking features:
+
+| Data | Command | Retention |
+|---|---|---|
+| Personal stat snapshots (Xanax used, Energy Drinks used, etc.) | `/leaderboard`, `/stats` | Retained while you are linked; removed on `/unlink` |
+| Monthly stat baselines (start-of-month values for delta calculation) | `/leaderboard monthly` | Retained while you are linked; removed on `/unlink` |
+| Gym energy log entries (energy used and timestamp) | `/gym` | Retained while you are linked; removed on `/unlink` |
+| Daily activity log (last-action timestamps) | Activity tracking | Retained while you are linked; removed on `/unlink` |
 
 No messages, voice data, or other personal information are collected or stored.
 
@@ -39,6 +47,7 @@ Collected data is used exclusively to:
 - Associate your Discord account with your Torn City profile for Bot features.
 - Verify faction membership to restrict access to relevant commands.
 - Display your Torn profile information alongside banking requests.
+- Calculate and display stat leaderboards, monthly progress, and gym energy usage.
 - Use your personal Torn API key (if provided) to perform lookups on your behalf, including faction data, investment data, and company director data.
 
 Your data is never sold, shared with third parties, or used for advertising.
@@ -47,9 +56,15 @@ Your data is never sold, shared with third parties, or used for advertising.
 
 ## 3. Data Storage
 
-Linked account data (Discord User ID → Torn Player ID, and optionally your personal Torn API key) is stored in a local SQLite database (`links.db`) on the server hosting the Bot. It is not stored in any external database or cloud service.
+Linked account data (Discord User ID → Torn Player ID, and optionally your personal Torn API key) and all leaderboard/tracking data are stored in a local SQLite database (`links.db`) on the server hosting the Bot. It is not stored in any external database or cloud service.
 
-Your personal API key, if provided, is stored in encrypted form (AES-256 SQLCipher + AES-128 Fernet column encryption) within this local database. It is accessible only to the Bot operator and is used solely to make Torn API requests on your behalf.
+Your personal API key, if provided, is protected by three independent layers of encryption:
+
+- **Layer 1 — SQLCipher AES-256:** The entire database file is encrypted at rest. Without the database passphrase, the file is unreadable binary with no visible structure.
+- **Layer 2 — Fernet (AES-128-CBC + HMAC-SHA256):** Each API key value is individually encrypted before being written to the database. Even with the database passphrase, raw values are still ciphertext.
+- **Layer 3 — AES-256-GCM envelope:** Each Fernet token is further wrapped with an authenticated AES-256-GCM cipher. Any tampering with stored values is cryptographically detected.
+
+All three keys are required to access a stored API key in plaintext. The key is accessible only to the Bot operator and is used solely to make Torn API requests on your behalf.
 
 Company data, employee information, and stock data retrieved via `/company` commands is fetched live from the Torn API and displayed in Discord. None of this data is written to the database or retained after the command response is sent.
 
@@ -67,8 +82,8 @@ Faction administrators may also use `/linkall` to automatically link all current
 
 You may optionally provide your personal Torn API key via `/link api_key:[key]`. By doing so, you acknowledge that:
 
-- The key is stored in encrypted form on the Bot's host server.
-- It is used only to make Torn API requests on your behalf — including profile lookups, balance checks, investment data, verification, and company director data if you use `/company` commands.
+- The key is stored under three layers of encryption on the Bot's host server (see Section 3).
+- It is used only to make Torn API requests on your behalf — including profile lookups, balance checks, investment data, stat snapshots, gym energy tracking, verification, and company director data if you use `/company` commands.
 - It is never transmitted to any third party other than the Torn City API.
 - You may remove it at any time using `/unlink key_only:True` without removing your account link.
 - For best security, generate a pre-scoped key using [this link](https://www.torn.com/preferences.php#tab=api?step=addNewKey&company=profile,detailed,employees,stock&faction=members,wars,basic,chain,news,balance,attacks&user=faction,basic,discord,personalstats,money,stocks,log&logIds=125&torn=stocks&title=FLBot_V5), which grants only the exact permissions the Bot requires. You should not provide a key with higher access than necessary.
@@ -77,7 +92,7 @@ You may optionally provide your personal Torn API key via `/link api_key:[key]`.
 
 ## 6. Data Retention
 
-Your linked account data is retained until you remove it yourself using `/unlink`, or until the Bot operator deletes it manually. Your personal API key can be independently removed at any time using `/unlink key_only:True` without removing your account link. You may request full removal at any time through your server's administration.
+Your linked account data is retained until you remove it yourself using `/unlink`, or until the Bot operator deletes it manually. Your personal API key can be independently removed at any time using `/unlink key_only:True` without removing your account link. Stat snapshots, monthly baselines, gym energy logs, and activity records are also removed when you use `/unlink`. You may request full removal at any time through your server's administration.
 
 On-demand data (company info, employee stats, stock levels, investment data) is never retained — it is fetched, displayed, and discarded within the same command response.
 
@@ -97,7 +112,7 @@ The Bot interacts with the following third-party services:
 You have the right to:
 
 - **Access** — Ask the Bot operator what data is stored about you.
-- **Deletion** — Use `/unlink` to remove your linked account data, or `/unlink key_only:True` to remove only your API key. Contact the Bot operator for full removal.
+- **Deletion** — Use `/unlink` to remove your linked account data (including all stat snapshots, gym logs, and activity records), or `/unlink key_only:True` to remove only your API key. Contact the Bot operator for full removal.
 - **Correction** — Re-link your account or update your API key if your information changes.
 
 ---
